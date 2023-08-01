@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "Pick & Go",
+    "slug": "pickngo",
+    "owner": "kushenthimira",
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "npc.cipher.pickngo",
+      "permissions": ["LOCATION"],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#262E48"
+      },
+      "config": {
+        "googleMaps": { "apiKey": "AIzaSyD87ToWqo4Y8vIjlgURucGldvbD5h44l3k" }
+      }
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "npc.cipher.pickngo"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
