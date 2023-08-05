@@ -17,16 +17,16 @@ export default function ({ navigation }) {
   const theme = useTheme();
 
   const handleFBPress = useCallback(async () => {
-    await Linking.openURL("https://www.facebook.com/ciphernpc/");
+    await Linking.openURL("https://www.facebook.com/");
   }, []);
   const handleGooglePress = useCallback(async () => {
-    await Linking.openURL("mailto: kushenthimira@gmail.com");
+    await Linking.openURL("mailto: firstjed4@gmail.com");
   }, []);
   const handleTwitterPress = useCallback(async () => {
-    await Linking.openURL("https://twitter.com/kushenthimira");
+    await Linking.openURL("https://twitter.com/jik_alvin");
   }, []);
   const handleGHPress = useCallback(async () => {
-    await Linking.openURL("https://github.com/kushenthimira/posify/releases");
+    await Linking.openURL("https://github.com/jikalvin");
   }, []);
   const FacebookIcon = (props) => <Icon {...props} name="facebook" />;
   const GoogleIcon = (props) => <Icon {...props} name="google" />;
