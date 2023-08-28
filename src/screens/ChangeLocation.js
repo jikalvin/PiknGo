@@ -30,10 +30,16 @@ export default function ({ navigation, route }) {
         <MapView
           provider={PROVIDER_GOOGLE}
           style={{ ...StyleSheet.absoluteFillObject }}
-          initialRegion={location.mapRegion}
-        >
-          <Marker coordinate={location.mapMarker} />
-        </MapView>
+          // initialRegion={location.mapRegion}
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
+          {/* <Marker coordinate={location.mapMarker} />
+        </MapView> */}
         <Button
           size="large"
           style={{

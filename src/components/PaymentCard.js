@@ -9,6 +9,7 @@ import {
 } from "@ui-kitten/components";
 import { PaymentIcon } from "react-native-payment-icons";
 import { ThemeContext } from "../configs/Theme";
+import { Image } from "react-native";
 
 export const PaymentCard = ({ type, number, onPress, style }) => {
   const themeContext = useContext(ThemeContext);
@@ -32,15 +33,22 @@ export const PaymentCard = ({ type, number, onPress, style }) => {
               alignItems: "center",
             }}
           >
-            <PaymentIcon type={type} style={{ marginRight: 20 }} />
+            <Image source={type} style={
+                {
+                  marginRight:20,
+                  height: 50,
+                  width: 60
+                }
+              } 
+            />
             <Layout>
               <Text
                 category="h6"
                 style={{ fontWeight: "bold", textTransform: "capitalize" }}
               >
-                {type}
+                {number}
               </Text>
-              <Text category="label">**** **** **** {number}</Text>
+              <Text category="label">{number}</Text>
             </Layout>
           </Layout>
           <Button

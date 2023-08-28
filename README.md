@@ -18,3 +18,10 @@
 - [ ] Price Estimation
 - [ ] Add Payment Methods
 - [ ] Manage Payment Methods
+
+<h3 align="left">To be done</h3>
+
+- [ ] User picks location for package to be picked up with maps
+- [ ] Show users' ongoing requests
+- [ ] Complete profile information
+- [ ] Make new requests

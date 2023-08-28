@@ -19,6 +19,7 @@ import { LocationCard } from "../components/LocationCard";
 import { NewCard } from "../components/NewCard";
 import { RequestCard } from "../components/RequestCard";
 import RenderIf from "../configs/RenderIf";
+import ShopCard from "../components/ShopCard";
 
 export default function ({ navigation }) {
   const auth = getAuth();
@@ -157,6 +158,24 @@ export default function ({ navigation }) {
               navigation.navigate("OngoingRequests");
             }}
           />
+
+          <ShopCard
+            onPress={() => {
+              navigation.navigate("Shop", {
+                request: {
+                  user,
+                  pickAd: address,
+                  pickLat: lat,
+                  pickLong: long,
+                  lat: 6.870622,
+                  long: 79.9216138,
+                  name: profile.name,
+                  phone: profile.phone,
+                },
+              })
+            }}
+          />
+
           {profile.name == "" || profile.phone == "" ? (
             <NewCard
               isProfile

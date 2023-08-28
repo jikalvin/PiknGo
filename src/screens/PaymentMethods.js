@@ -37,8 +37,8 @@ export default function ({ navigation }) {
         icon="cash-multiple"
         btnText="Selected"
       />
-      <PaymentCard type="mastercard" number="3045" />
-      <PaymentCard type="visa" number="4215" />
+      <PaymentCard type={require("../../assets/mtn.jpg")} number="683340380" />
+      <PaymentCard type={require("../../assets/orange.png")} number="683340380" />
     </Screen>
   );
 }
