@@ -41,7 +41,7 @@ export default function ({ navigation, route }) {
       backAction={() => {
         navigation.goBack();
       }}
-      headerTitle={"Request Information"}
+      headerTitle={"Shopping"}
     >
       <LocationCard
         icon="clock"

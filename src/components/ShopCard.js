@@ -57,7 +57,23 @@ const ShopCard = ({ onPress, style }) => {
                   color: theme["color-info-default"],
                 }}
               >
-                Go Shopping
+                Shop
+              </Text>
+              <Text
+                style={{
+                  color: theme["color-info-default"],
+                  fontSize: 14
+                }}
+              >
+                Send someone to buy
+              </Text>
+              <Text
+                style={{
+                  color: theme["color-info-default"],
+                  fontSize: 14
+                }}
+              >
+                things for you
               </Text>
             </Layout>
           </Layout>
