@@ -5,6 +5,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { LocationCard } from "../components/LocationCard";
 import Screen from "../components/Screen";
+import ShoppingForm from "../components/ShopForm";
 
 export default function ({ navigation, route }) {
   const { request } = route.params;
@@ -49,6 +50,7 @@ export default function ({ navigation, route }) {
         location={time}
         onPress={showDatepicker}
       />
+      <ShoppingForm />
       <Input
         accessoryLeft={renderIcon}
         style={{ margin: "2%", marginHorizontal: "5%" }}
