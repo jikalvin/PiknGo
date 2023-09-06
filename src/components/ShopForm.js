@@ -1,79 +1,124 @@
-import React, { useState } from 'react';
-import { Button, CheckBox, Icon, Input, Layout, List } from '@ui-kitten/components';
+import React, { useState } from 'react'
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Alert,
+  FlatList,
+} from 'react-native'
 
-const initialItems = [
-  { name: 'Rice', selected: false },
-  { name: 'Tomato', selected: false },
-  // Add more initial items here
-];
+import { optionlist } from '../screens/utils/constants'
 
-const ShoppingForm = () => {
-  const [items, setItems] = useState(initialItems);
-  const [itemName, setItemName] = useState('');
+export default ShoppingForm = () => {
 
-  const handleAddItem = () => {
-    if (itemName.trim() !== '') {
-      setItems([...items, { name: itemName, selected: false }]);
-      setItemName('');
-    }
-  };
+  const [options, setOptions] = useState(optionlist)
 
-  const handleRemoveItem = (index) => {
-    const updatedItems = [...items];
-    updatedItems.splice(index, 1);
-    setItems(updatedItems);
-  };
-
-  const handleToggleItem = (index) => {
-    const updatedItems = [...items];
-    updatedItems[index].selected = !updatedItems[index].selected;
-    setItems(updatedItems);
-  };
-
-  const renderItem = ({ item, index }) => (
-    <Layout
-      key={index}
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginTop: 8,
-      }}
-    >
-      <CheckBox
-        checked={item.selected}
-        onChange={() => handleToggleItem(index)}
-      />
-      <Input value={item.name} disabled style={{ flex: 1, marginLeft: 8 }} />
-      <Button
-        appearance="ghost"
-        status="danger"
-        onPress={() => handleRemoveItem(index)}
-      >
-        <Icon name="trash-2-outline" />
-      </Button>
-    </Layout>
-  );
+  const clickEventListener = item => {
+    Alert.alert(item.title)
+  }
 
   return (
-    <Layout style={{ padding: 16 }}>
-      <Input
-        placeholder="Enter item name"
-        value={itemName}
-        onChangeText={setItemName}
-        accessoryRight={(props) => (
-          <Button appearance="ghost" status="basic" {...props}>
-            <Icon name="plus-outline" />
-          </Button>
-        )}
-        onSubmitEditing={handleAddItem}
-      />
-      <List
-        data={items}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
-      />
-    </Layout>
-  );
-};
+    <View style={styles.container}>
+      <FlatList
+        style={styles.list}
+        contentContainerStyle={styles.listContainer}
+        data={options}
+        horizontal={false}
+        numColumns={2}
+        keyExtractor={item => {
+          return item.id
+        }}
+        renderItem={({ item }) => {
+          return (
+            <View>
+              <TouchableOpacity
+                style={[styles.card, { backgroundColor: item.color }]}
+                onPress={() => {
+                  clickEventListener(item)
+                }}>
+                <Image style={styles.cardImage} source={{ uri: item.image }} />
+              </TouchableOpacity>
 
-export default ShoppingForm;
+              <View style={styles.cardHeader}>
+                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={[styles.title, { color: item.color }]}>{item.title}</Text>
+                </View>
+              </View>
+            </View>
+          )
+        }}
+      />
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 40,
+    backgroundColor: '#fff',
+  },
+  list: {
+    paddingHorizontal: 5,
+    backgroundColor: '#fff',
+  },
+  listContainer: {
+    alignItems: 'center',
+  },
+  /******** card **************/
+  card: {
+    shadowColor: '#474747',
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+
+    elevation: 12,
+    marginVertical: 20,
+    marginHorizontal: 40,
+    backgroundColor: '#e2e2e2',
+    //flexBasis: '42%',
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cardHeader: {
+    paddingVertical: 17,
+    paddingHorizontal: 16,
+    borderTopLeftRadius: 1,
+    borderTopRightRadius: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cardContent: {
+    paddingVertical: 12.5,
+    paddingHorizontal: 16,
+  },
+  cardFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 12.5,
+    paddingBottom: 25,
+    paddingHorizontal: 16,
+    borderBottomLeftRadius: 1,
+    borderBottomRightRadius: 1,
+  },
+  cardImage: {
+    height: 50,
+    width: 50,
+    alignSelf: 'center',
+  },
+  title: {
+    fontSize: 24,
+    flex: 1,
+    alignSelf: 'center',
+    fontWeight: 'bold',
+  },
+})

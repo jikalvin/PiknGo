@@ -62,7 +62,7 @@ export default function ({ navigation, route }) {
         disabled
       />
 
-      <Layout style={{ flex: 1, marginTop: 5 }}>
+      {/* <Layout style={{ flex: 1, marginTop: 5 }}>
         <MapView
           provider={PROVIDER_GOOGLE}
           style={{ ...StyleSheet.absoluteFillObject }}
@@ -80,7 +80,7 @@ export default function ({ navigation, route }) {
             }}
           />
         </MapView>
-      </Layout>
+      </Layout> */}
 
       <Button
         size="large"
