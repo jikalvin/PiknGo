@@ -12,6 +12,7 @@ export default function ({ navigation, route }) {
   const [pickDate, setDate] = useState(new Date());
   const [pickTime, setTime] = useState(new Date());
   const [dateShow, setDateShow] = useState(true);
+  const [selected, setSelected] = useState([]);
   const [timeShow, setTimeShow] = useState(false);
   const [address, setAddress] = useState(
     "No.42, Vijithapura Rd, Sri Jayawardenepura Kotte"
@@ -34,6 +35,9 @@ export default function ({ navigation, route }) {
   const showDatepicker = () => {
     setDateShow(true);
   };
+  const handleSetSelected = (items) => {
+    setSelected(items);
+  };
 
   const renderIcon = (props) => <Icon {...props} name="search" />;
 
@@ -50,7 +54,9 @@ export default function ({ navigation, route }) {
         location={time}
         onPress={showDatepicker}
       />
-      <ShoppingForm />
+      <ShoppingForm 
+        handleSetSelected={handleSetSelected}
+      />
       <Input
         accessoryLeft={renderIcon}
         style={{ margin: "2%", marginHorizontal: "5%" }}
@@ -92,6 +98,7 @@ export default function ({ navigation, route }) {
           alignSelf: "center",
         }}
         onPress={() => {
+          console.log(selected)
           navigation.navigate("Confirmation", {
             request: {
               date,

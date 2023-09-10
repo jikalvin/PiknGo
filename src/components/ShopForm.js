@@ -11,13 +11,22 @@ import {
 
 import { optionlist } from '../screens/utils/constants'
 
-export default ShoppingForm = () => {
+export default ShoppingForm = ({ handleSetSelected }) => {
 
   const [options, setOptions] = useState(optionlist)
+  const [selectedItems, setSelectedItems] = useState([]);
 
-  const clickEventListener = item => {
-    Alert.alert(item.title)
-  }
+  const handleItemPress = (itemId) => {
+    if (selectedItems.includes(itemId)) {
+      // Item is already selected, so remove it from the selectedItems array
+      setSelectedItems(selectedItems.filter((id) => id !== itemId));
+      handleSetSelected(selectedItems)
+    } else {
+      // Item is not selected, so add it to the selectedItems array
+      setSelectedItems([...selectedItems, itemId]);
+      handleSetSelected(selectedItems)
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -31,13 +40,13 @@ export default ShoppingForm = () => {
           return item.id
         }}
         renderItem={({ item }) => {
+          const isSelected = selectedItems.includes(item.title);
           return (
             <View>
               <TouchableOpacity
-                style={[styles.card, { backgroundColor: item.color }]}
-                onPress={() => {
-                  clickEventListener(item)
-                }}>
+                style={[styles.card, { backgroundColor: isSelected ? "#00ff00" : item.color }]}
+                onPress={() => handleItemPress(item.title)}
+              >
                 <Image style={styles.cardImage} source={{ uri: item.image }} />
               </TouchableOpacity>
 
